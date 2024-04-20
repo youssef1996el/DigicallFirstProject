@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BrandController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('Dashboard',[AdminController::class,'index']);
+Route::get('Brand'    ,[BrandController::class,'index']);
+Route::post('Store'   ,[BrandController::class,'Store'])->name('post.brand');

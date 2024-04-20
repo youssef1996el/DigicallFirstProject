@@ -76,26 +76,20 @@
 						<div class="menu-title">Dashboard</div>
 					</a>
 					<ul>
-						<li> <a href="index.html"><i class='bx bx-radio-circle'></i>eCommerce</a>
+						<li> 
+                            <a href="{{url('Brand')}}">
+                                <i class='bx bx-radio-circle'></i>
+                                Brand
+                            </a>
 						</li>
-						<li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Analytics</a>
+						<li> 
+                            <a href="index2.html">
+                                <i class='bx bx-radio-circle'></i>
+                                Analytics
+                            </a>
 						</li>
 					</ul>
 				</li>
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			</ul>
 			<!--end navigation-->
 		</div>
