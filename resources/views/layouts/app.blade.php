@@ -1,4 +1,85 @@
-{{-- <!DOCTYPE html>
+{{-- <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+   
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+   
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                   
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                   
+                    <ul class="navbar-nav ms-auto">
+                       
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div> 
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
+ --}}
+
+ {{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -139,7 +220,7 @@
 <html class="no-js" lang="fr">
   <head
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4WSFYVDV4E"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WSFYVDV4E"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -184,8 +265,17 @@
 </title>
 
     
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ --}}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <script src="{{asset('JS/bootstrap.min.js')}}"></script>
+ <script src="{{asset('JS/jquery.min.js')}}"></script>
+ <script src="{{asset('JS/main.js')}}"></script>
+ <script src="{{asset('JS/popper.js')}}"></script>
 
-    
+ <link rel="stylesheet" href="{{asset('CSS/style.css')}}">
 
 <meta property="og:site_name" content="horlogio MA">
 <meta property="og:url" content="https://horlogio.com/">
@@ -1580,32 +1670,7 @@ for (var attr in meta) {
       <section id="shopify-section-template--19612164129064__image_banner" class="shopify-section section"><link href="//horlogio.com/cdn/shop/t/3/assets/section-image-banner.css?v=81971971763012089891687820339" rel="stylesheet" type="text/css" media="all" />
 <style data-shopify>#Banner-template--19612164129064__image_banner::after {
     opacity: 0.4;
-  }</style><div
-  id="Banner-template--19612164129064__image_banner"
-  class="banner banner--content-align-center banner--content-align-mobile-center banner--large banner--desktop-transparent scroll-trigger animate--fade-in"
-><div class="banner__media media animate--ambient scroll-trigger animate--fade-in"><img src="//horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=3840" alt="" srcset="//horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=450 450w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=660 660w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=900 900w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=1320 1320w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=1800 1800w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=2136 2136w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=2400 2400w, //horlogio.com/cdn/shop/files/montre1_a338ea02-f779-4b73-86fb-c0b952fc4d84.jpg?v=1687823794&amp;width=3600 3600w" width="2000" height="1332.9999999999998" loading="lazy" sizes="120vw">
-    </div><div class="banner__content banner__content--bottom-center page-width scroll-trigger animate--slide-in">
-    <div class="banner__box content-container content-container--full-width-mobile color-background-2 gradient"><h2
-              class="banner__heading inline-richtext h1"
-              
-            >
-              L'éxactitude est la politesse des montres
-            </h2><div
-              class="banner__buttons banner__buttons--multiple"
-              
-            ><a
-                  
-                    href="/collections/homme"
-                  
-                  class="button button--primary"
-                >HOMMES</a><a
-                  
-                    href="/collections/femme"
-                  
-                  class="button button--primary"
-                >FEMMES</a></div></div>
-  </div>
-</div>
+  }</style>
 
 
 </section><section id="shopify-section-template--19612164129064__rich_text" class="shopify-section section"><link href="//horlogio.com/cdn/shop/t/3/assets/section-rich-text.css?v=155250126305810049721687820340" rel="stylesheet" type="text/css" media="all" />
@@ -1619,22 +1684,7 @@ for (var attr in meta) {
       padding-top: 40px;
       padding-bottom: 0px;
     }
-  }</style><div class="isolate">
-  <div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--19612164129064__rich_text-padding">
-    <div class="rich-text__wrapper rich-text__wrapper--center page-width">
-      <div class="rich-text__blocks center"><h2
-                class="rich-text__heading rte inline-richtext h1 scroll-trigger animate--slide-in"
-                
-                
-                  data-cascade
-                  style="--animation-order: 1;"
-                
-              >
-                <strong>COLLECTIONS</strong>
-              </h2></div>
-    </div>
-  </div>
-</div>
+  }</style>
 
 
 </section><section id="shopify-section-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028" class="shopify-section section section-collection-list"><link href="//horlogio.com/cdn/shop/t/3/assets/section-collection-list.css?v=70863279319435850561687820339" rel="stylesheet" type="text/css" media="all" />
@@ -1650,275 +1700,7 @@ for (var attr in meta) {
       padding-top: 36px;
       padding-bottom: 36px;
     }
-  }</style><div class="color-background-1 gradient">
-  <div class="collection-list-wrapper page-width isolate no-heading no-mobile-link section-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028-padding"><slider-component class="slider-mobile-gutter scroll-trigger animate--slide-in">
-      <ul
-        class="collection-list contains-card contains-card--collection contains-card--standard grid grid--3-col-desktop grid--1-col-tablet-down collection-list--3-items"
-        id="Slider-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028"
-        role="list"
-      ><li
-            id="Slide-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028-1"
-            class="collection-list__item grid__item scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 1;"
-            
-          >
-<div class="card-wrapper animate-arrow collection-card-wrapper">
-  <div
-    class="
-      card
-      card--standard
-       card--media
-      
-      
-      
-    "
-    style="--ratio-percent: 100%;"
-  >
-    <div
-      class="card__inner color-background-2 gradient ratio"
-      style="--ratio-percent: 100%;"
-    ><div class="card__media">
-          <div class="media media--transparent media--hover-effect">
-            <img
-              srcset="//horlogio.com/cdn/shop/collections/photo3.jpg?v=1668137891&width=165 165w,//horlogio.com/cdn/shop/collections/photo3.jpg?v=1668137891&width=330 330w,//horlogio.com/cdn/shop/collections/photo3.jpg?v=1668137891 428w
-              "
-              src="//horlogio.com/cdn/shop/collections/photo3.jpg?v=1668137891&width=1500"
-              sizes="
-                (min-width: 1200px) 366px,
-                (min-width: 750px) calc((100vw - 10rem) / 2),
-                calc(100vw - 3rem)
-              "
-              alt=""
-              height="609"
-              width="428"
-              loading="lazy"
-              class="motion-reduce"
-            >
-          </div>
-        </div><div class="card__content">
-          <div class="card__information">
-            <h3 class="card__heading">
-              <a
-                
-                  href="/collections/homme"
-                
-                class="full-unstyled-link"
-              >Homme<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-              </a>
-            </h3></div>
-        </div></div><div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading">
-            <a
-              
-                href="/collections/homme"
-              
-              class="full-unstyled-link"
-            >Homme<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-            </a>
-          </h3></div>
-      </div></div>
-</div>
-
-          </li><li
-            id="Slide-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028-2"
-            class="collection-list__item grid__item scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 2;"
-            
-          >
-<div class="card-wrapper animate-arrow collection-card-wrapper">
-  <div
-    class="
-      card
-      card--standard
-       card--media
-      
-      
-      
-    "
-    style="--ratio-percent: 100%;"
-  >
-    <div
-      class="card__inner color-background-2 gradient ratio"
-      style="--ratio-percent: 100%;"
-    ><div class="card__media">
-          <div class="media media--transparent media--hover-effect">
-            <img
-              srcset="//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=165 165w,//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=330 330w,//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=535 535w,//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=750 750w,//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=1000 1000w,//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008 1230w
-              "
-              src="//horlogio.com/cdn/shop/collections/photo2.jpg?v=1668138008&width=1500"
-              sizes="
-                (min-width: 1200px) 366px,
-                (min-width: 750px) calc((100vw - 10rem) / 2),
-                calc(100vw - 3rem)
-              "
-              alt=""
-              height="1236"
-              width="1230"
-              loading="lazy"
-              class="motion-reduce"
-            >
-          </div>
-        </div><div class="card__content">
-          <div class="card__information">
-            <h3 class="card__heading">
-              <a
-                
-                  href="/collections/femme"
-                
-                class="full-unstyled-link"
-              >Femme<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-              </a>
-            </h3></div>
-        </div></div><div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading">
-            <a
-              
-                href="/collections/femme"
-              
-              class="full-unstyled-link"
-            >Femme<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-            </a>
-          </h3></div>
-      </div></div>
-</div>
-
-          </li><li
-            id="Slide-template--19612164129064__b24bba64-039f-49da-8f1d-cd70faafe028-3"
-            class="collection-list__item grid__item scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 3;"
-            
-          >
-<div class="card-wrapper animate-arrow collection-card-wrapper">
-  <div
-    class="
-      card
-      card--standard
-       card--media
-      
-      
-      
-    "
-    style="--ratio-percent: 100%;"
-  >
-    <div
-      class="card__inner color-background-2 gradient ratio"
-      style="--ratio-percent: 100%;"
-    ><div class="card__media">
-          <div class="media media--transparent media--hover-effect">
-            <img
-              srcset="//horlogio.com/cdn/shop/collections/3.jpg?v=1668138146&width=165 165w,//horlogio.com/cdn/shop/collections/3.jpg?v=1668138146&width=330 330w,//horlogio.com/cdn/shop/collections/3.jpg?v=1668138146&width=535 535w,//horlogio.com/cdn/shop/collections/3.jpg?v=1668138146 540w
-              "
-              src="//horlogio.com/cdn/shop/collections/3.jpg?v=1668138146&width=1500"
-              sizes="
-                (min-width: 1200px) 366px,
-                (min-width: 750px) calc((100vw - 10rem) / 2),
-                calc(100vw - 3rem)
-              "
-              alt=""
-              height="540"
-              width="540"
-              loading="lazy"
-              class="motion-reduce"
-            >
-          </div>
-        </div><div class="card__content">
-          <div class="card__information">
-            <h3 class="card__heading">
-              <a
-                
-                  href="/collections/nouvel-arrivage"
-                
-                class="full-unstyled-link"
-              >Nouvel Arrivage<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-              </a>
-            </h3></div>
-        </div></div><div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading">
-            <a
-              
-                href="/collections/nouvel-arrivage"
-              
-              class="full-unstyled-link"
-            >Nouvel Arrivage<span class="icon-wrap"><svg
-  viewBox="0 0 14 10"
-  fill="none"
-  aria-hidden="true"
-  focusable="false"
-  class="icon icon-arrow"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
-</svg>
-</span>
-            </a>
-          </h3></div>
-      </div></div>
-</div>
-
-          </li></ul></slider-component></div>
-</div>
+  }</style>
 
 
 </section><section id="shopify-section-template--19612164129064__9a364c24-631f-4201-b8f6-292d11fb8d50" class="shopify-section section"><link href="//horlogio.com/cdn/shop/t/3/assets/section-rich-text.css?v=155250126305810049721687820340" rel="stylesheet" type="text/css" media="all" />
@@ -1932,22 +1714,50 @@ for (var attr in meta) {
       padding-top: 40px;
       padding-bottom: 52px;
     }
-  }</style><div class="isolate">
-  <div class="rich-text content-container color-background-1 gradient rich-text--full-width content-container--full-width section-template--19612164129064__9a364c24-631f-4201-b8f6-292d11fb8d50-padding">
-    <div class="rich-text__wrapper rich-text__wrapper--center page-width">
-      <div class="rich-text__blocks center"><h2
-                class="rich-text__heading rte inline-richtext h1 scroll-trigger animate--slide-in"
+  }</style>
+{{-- <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+
+            <div class="wrap mt-5">
                 
-                
-                  data-cascade
-                  style="--animation-order: 1;"
-                
-              >
-                <strong>AVIS DE NOS CLIENTS</strong>
-              </h2></div>
+                <div class="login-wrap p-4 p-md-5">
+                    <div class="d-flex">
+                        <div class="w-100">
+                            <h3 class="mb-4">Log in</h3>
+                        </div>
+                        
+                    </div>
+                    <form method="POST" action="{{ route('login') }}" class="signin-form">
+                        @csrf
+                        <div class="form-group mt-3">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" autofocus required="">
+                            <label class="form-control-placeholder " for="username">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input id="password-field" type="password" class="form-control @error('password') is-invalid @enderror" required="">
+                            <label class="form-control-placeholder" for="password">Password</label>
+                            <span toggle="#password-field" class="fa-solid fa-eye field-icon toggle-password"></span>
+                            
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                        </div>
+                        <div class="form-group d-md-flex">
+                           
+                        </div>
+                    </form>
+                    <p class="text-center"> <a data-toggle="tab" href="{{url('register')}}">Sign Up</a></p>
+                </div>
+            </div>
+           
+            
+            
+        </div>
     </div>
-  </div>
-</div>
+</div> --}}
+
+@yield('content')
 
 
 </section><section id="shopify-section-template--19612164129064__multicolumn" class="shopify-section section"><link href="//horlogio.com/cdn/shop/t/3/assets/section-multicolumn.css?v=120651070842298201681687820340" rel="stylesheet" type="text/css" media="all" />
@@ -1963,81 +1773,7 @@ for (var attr in meta) {
       padding-bottom: 36px;
     }
   }</style><div class="multicolumn color-background-1 gradient background-none no-heading">
-  <div
-    class="page-width section-template--19612164129064__multicolumn-padding isolate scroll-trigger animate--slide-in"
-    
-      data-cascade
-    
-  ><slider-component class="slider-mobile-gutter">
-      <ul
-        class="multicolumn-list contains-content-container grid grid--1-col-tablet-down grid--3-col-desktop slider slider--mobile grid--peek"
-        id="Slider-template--19612164129064__multicolumn"
-        role="list"
-      ><li
-            id="Slide-template--19612164129064__multicolumn-1"
-            class="multicolumn-list__item grid__item slider__slide center scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 1;"
-            
-          >
-            <div class="multicolumn-card content-container"><div class="multicolumn-card__info"><h3 class="inline-richtext"><strong>Jean-Pierre Prudence</strong></h3><div class="rte"><p>Apres avoir été déçu de la part de plusieurs site je suis enfin tombé sur le votre ,vous méritez bien que je vous écrive ce commentaire . j'ai pu vérifier mon colis avant de payer, la qualité été  bien meilleure que le prix j'en suis très content, je vous ai recommandé a quelques amis qui ne tarderons pas a passer leurs commandes aussi. MERCI</p></div></div>
-            </div>
-          </li><li
-            id="Slide-template--19612164129064__multicolumn-2"
-            class="multicolumn-list__item grid__item slider__slide center scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 2;"
-            
-          >
-            <div class="multicolumn-card content-container"><div class="multicolumn-card__info"><h3 class="inline-richtext"><strong>Bilal Azzeria</strong></h3><div class="rte"><p>il y a 1 an Jai effectué mon premier achat de chez Montresapphire...maintenant je suis a mon 5 ème achat et je suis toujours satisfait. Bravo et bonne continuation </p></div></div>
-            </div>
-          </li><li
-            id="Slide-template--19612164129064__multicolumn-3"
-            class="multicolumn-list__item grid__item slider__slide center scroll-trigger animate--slide-in"
-            
-            
-              data-cascade
-              style="--animation-order: 3;"
-            
-          >
-            <div class="multicolumn-card content-container"><div class="multicolumn-card__info"><h3 class="inline-richtext"><strong>Martin Thulani</strong></h3><div class="rte"><p>High quality products and a very professional service. Happy to deal with you</p></div></div>
-            </div>
-          </li></ul><div class="slider-buttons no-js-hidden medium-hide">
-          <button
-            type="button"
-            class="slider-button slider-button--prev"
-            name="previous"
-            aria-label="Faire glisser vers la gauche"
-          >
-            <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-</svg>
-
-          </button>
-          <div class="slider-counter caption">
-            <span class="slider-counter--current">1</span>
-            <span aria-hidden="true"> / </span>
-            <span class="visually-hidden">de</span>
-            <span class="slider-counter--total">3</span>
-          </div>
-          <button
-            type="button"
-            class="slider-button slider-button--next"
-            name="next"
-            aria-label="Faire glisser vers la droite"
-          >
-            <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-</svg>
-
-          </button>
-        </div></slider-component>
-    <div class="center small-hide medium-hide"></div>
-  </div>
+  
 </div>
 
 
@@ -2054,33 +1790,7 @@ for (var attr in meta) {
     }
   }</style>
 
-<div class="image-with-text image-with-text--no-overlap page-width isolate section-template--19612164129064__1e2bf73d-1eb3-4f7d-a8e8-585cc47e1c7e-padding scroll-trigger animate--slide-in">
-  <div class="image-with-text__grid grid grid--gapless grid--1-col grid--2-col-tablet">
-    <div class="image-with-text__media-item image-with-text__media-item--medium image-with-text__media-item--top grid__item">
-      <div
-        class="image-with-text__media image-with-text__media--adapt gradient color-background-1 global-media-settings media"
-        
-          style="padding-bottom: 142.25%;"
-        
-      ><img src="//horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=1500" alt="" srcset="//horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=165 165w, //horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=360 360w, //horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=535 535w, //horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=750 750w, //horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=1070 1070w, //horlogio.com/cdn/shop/files/photo3_400x_e853106a-5ef6-4bbd-b4af-9fcd6ab410c4.png?v=1687823995&amp;width=1500 1500w" width="1500" height="2134" loading="lazy" sizes="(min-width: 1200px) 550px,
-              (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)">
-</div>
-    </div>
-    <div class="image-with-text__text-item grid__item">
-      <div
-        id="ImageWithText--template--19612164129064__1e2bf73d-1eb3-4f7d-a8e8-585cc47e1c7e"
-        class="image-with-text__content image-with-text__content--top image-with-text__content--desktop-left image-with-text__content--mobile-left image-with-text__content--adapt gradient color-background-1 content-container"
-      ><h2
-                class="image-with-text__heading inline-richtext h1"
-                
-              >
-                <strong>VOTRE BOUTIQUE DE RÉFERENCE</strong>
-              </h2><div class="image-with-text__text rte body" >
-                <p><em>Passionner par l'horlogerie! Une équipe de plus de 8 personnes travaillent ensemble pour vous présenter une variété de montres fabuleuses. Que ce soit un cadeau ou pour vous faire plaisir</em></p><p><em>Horlogio</em><em><strong> </strong></em><em>sélectionne pour vous les modèles les plus célèbres et tendances parmi les plus grandes marques horlogères</em></p>
-              </div></div>
-    </div>
-  </div>
-</div>
+
 
 
 </div>
@@ -2111,115 +1821,8 @@ for (var attr in meta) {
       padding-top: 36px;
       padding-bottom: 36px;
     }
-  }</style><footer class="footer color-accent-1 gradient section-sections--19612164587816__footer-padding"><div class="footer__content-top page-width"><div
-            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet  scroll-trigger animate--slide-in"
-            
-              data-cascade
-            
-          ><div
-                class="footer-block grid__item scroll-trigger animate--slide-in"
-                
-                
-                  data-cascade
-                  style="--animation-order: 1;"
-                
-              ><div class="footer-block__details-content footer-block-image "><div
-                          class="footer-block__image-wrapper"
-                          style="max-width: min(100%, 250px);"
-                        >
-                          <img
-                            srcset="//horlogio.com/cdn/shop/files/horlogiologo.png?v=1667978813&width=250, //horlogio.com/cdn/shop/files/horlogiologo.png?v=1667978813&width=500 2x"
-                            src="//horlogio.com/cdn/shop/files/horlogiologo.png?v=1667978813&width=760"
-                            alt=""
-                            loading="lazy"
-                            width="1058"
-                            height="240"
-                          >
-                        </div></div></div><div
-                class="footer-block grid__item footer-block--menu scroll-trigger animate--slide-in"
-                
-                
-                  data-cascade
-                  style="--animation-order: 2;"
-                
-              ><h2 class="footer-block__heading inline-richtext"><strong>NOTRE SOCIÉTÉ</strong></h2><ul class="footer-block__details-content list-unstyled"><li>
-                            <a
-                              href="/search"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              Search
-                            </a>
-                          </li><li>
-                            <a
-                              href="/pages/contact"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              Contacter Nous
-                            </a>
-                          </li><li>
-                            <a
-                              href="/pages/faqs"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              FAQs
-                            </a>
-                          </li><li>
-                            <a
-                              href="/pages/livraison"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              Livraison
-                            </a>
-                          </li><li>
-                            <a
-                              href="/pages/qui-sommes-nous"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              Qui sommes nous?
-                            </a>
-                          </li><li>
-                            <a
-                              href="/pages/retour-et-echange"
-                              class="link link--text list-menu__item list-menu__item--link"
-                            >
-                              Retour et Echange
-                            </a>
-                          </li></ul></div><div
-                class="footer-block grid__item scroll-trigger animate--slide-in"
-                
-                
-                  data-cascade
-                  style="--animation-order: 3;"
-                
-              ><h2 class="footer-block__heading inline-richtext"><strong>CONTACTEZ NOUS</strong></h2><div class="footer-block__details-content rte">
-                      <p>Email: <a href="mailto:Contact@horlogio.com" title="mailto:Contact@horlogio.com">Contact@horlogio.com</a></p><p>Whatsapp: +212680517577</p>
-                    </div></div></div><div
-          class="footer-block--newsletter scroll-trigger animate--slide-in"
-          
-            data-cascade
-          
-        ></div>
-      </div><div
-    class="footer__content-bottom scroll-trigger animate--slide-in"
-    
-      data-cascade
-    
-  >
-    <div class="footer__content-bottom-wrapper page-width">
-      <div class="footer__column footer__localization isolate"></div>
-      <div class="footer__column footer__column--info"><div class="footer__payment">
-            <span class="visually-hidden">Moyens de paiement</span>
-            <ul class="list list-payment" role="list"></ul>
-          </div></div>
-    </div>
-    <div class="footer__content-bottom-wrapper page-width footer__content-bottom-wrapper--center">
-      <div class="footer__copyright caption">
-        <small class="copyright__content"
-          >&copy; 2024, <a href="/" title="">horlogio MA</a></small>
-        <small class="copyright__content">, THIS SITE IS NOT A PART OF THE FACEBOOK WEBSITE OR FACEBOOK INC. ADDITIONALLY, THIS SITE IS NOT ENDORSED BY FACEBOOK IN ANY WAY. FACEBOOK IS A TRADEMARK OF FACEBOOK, INC.</small></div>
-    </div>
-  </div>
-</footer>
+  }</style>
+  
 </div>
 <!-- END sections: footer-group -->
 
@@ -2277,16 +1880,7 @@ var tt_page_type = 'index'
      
 </script>
 
-{{-- <script>
-var vstar_review_settings= {"is_install":1,"is_activate_reviews":1,"theme_style":1,"layout":2,"font_color":"#000000","star_color":"#FFA800","card_bg_color":"#FFFFFF","box_bg_color":"#FFFFFF","is_activate_product_rating":1,"is_show_country_flag":2,"is_transparent":2,"is_show_google_snippet":2,"language":"fr","lang_reviews":"avis","is_activate_collection_rating":1,"is_activate_home_rating":2,"is_show_list_stars_without_review":2,"is_show_stars_without_review":1,"is_translate_review":2,"is_activate_home_reviews":2,"theme_version":"","is_del_powered":2,"reviews_per_page_number":15,"review_sort_by":"image-descending","is_hide_ratings":2,"verified_badge_color":"#000000","all_reviews_page_handle":"","sidetab_setting":{"sidetab_is_enabled":2,"sidetab_background_color":"#000000","sidetab_font_color":"#FFFFFF","sidetab_button_text":"★Reviews","show_corresponding_product":2},"review_pagination_type":1,"auto_switch_language":2,"is_show_review_button":1,"badge_text_color":"#000000","is_show_verified_badge":1,"review_date_format_type":4,"rating_filter":1,"button_bg_color":"#000000","button_color":"#FFFFFF","button_border_color":"#000000","font_size":14,"nostar_color":"#d9d9d9","dividing_line_color":"#00000017","card_shadow":"Dark","border_radius":2,"is_show_helpful":2,"collection_pages_display_content":1,"review_empty_status_display":1,"reply_bg_color":"#F2F2F2","is_qa_active":2,"qa_colors":"#000000,#E6E6E6,#E6E6E6,#000000,#000000,#F2F2F2","item_type":2}
-var vstar_instagram_settings= {"is_install":2}
-var vstar_custom_info = {"get_move_review_info":{"list":[]},"custom_style_info":{"list":[]},"star_insert_adaptation_info":{"list":[{"theme_id":152779718952,"product_list_star":"h3.card__heading.h5"}]}}
-var vstar_lang_json = {"customer_reviews":"Avis des clients","no_reviews":"pas encore de commentaires","write_reviews":"Écrire un commentaire","name":"Votre nom","email":"Votre email","feedback":"Votre commentaire","required":"Veuillez remplir ce champ","email_error":"Ce n'est pas un format de courriel valide.","add_photo":"Ajouter une photo","submit":"Soumettre un avis","success_message":"Merci pour votre avis !","submitted_successfully":"Votre avis a été soumis avec succès","continue_shopping":"Poursuivre les achats","star":"étoiles","reviews":"avis","error_tip":"Désolé, quelque chose s'est mal passé, veuillez réessayer plus tard","more":"Plus","submitting":"soumission","show_full_review":"Voir l'avis complet","helpful":"Utile?","sort_by":"Trier par","sort_by_options":["Priorité aux photos","Le plus récent","Notes les plus élevées","Notes les plus basses"],"verified_purchase":"Achat vérifié","you_rating":"Votre note","phone":"Numéro de téléphone","reply":"Répondre","item_type":"Type d'article:","product_pages_reviews":"{{star}} {{review_number}} Avis","separate_review_form":{"slide_1_title":"Comment évaluez-vous cet article ?","slide_2_title":"Montrez-le","slide_2_subtitle":"Nous aimerions le voir en action !","slide_3_title":"Dites-nous en plus !","slide_4_title":"À propos de vous","slide_5_title":"Merci !","slide_5_subtitle":"Votre avis a été envoyé","discount":"Obtenez {{Discount}} sur votre prochain achat !","add_photo":"Ajouter une photo","or":"ou","add_video":"Ajouter une vidéo","back":"Retour","skip":"Ignorer","uploading":"Téléchargement","uploading_video_tip":"Téléchargement de la vidéo, veuillez patienter...","next":"Suivant","content_from_placeholder":"Partagez votre expérience","your_name":"Votre nom","email":"E-mail","done":"Terminé","continue":"Continuer","rating_options":["Aimer","J'aime ça!","C'est bon","Je n'ai pas aimé","Le detesté"],"discount_setting":{"title":"Vous avez un bon de réduction de {{Discount_amount}} !","subtitle":"Votre avis a été envoyé ! Vous bénéficierez de {{Discount_amount}} de réduction sur votre prochain achat.","tip_1":"Ajoutez des photos et obtenez {{Discount_amount}} de réduction sur votre prochain achat !","tip_2":"Postez de vrais sentiments et obtenez {{Discount_amount}} de réduction sur votre prochain achat !","tip_3":"Partagez votre expérience pour obtenir {{Discount_amount}} de réduction sur votre prochain achat !","copy":"Copier"}},"card_carousel":{"header_title":"Excellent","header_review_rating_text":"moyenne","header_review_count_text":"avis"},"all_in_one_from":{"write_reviews":"Écrire un commentaire","or":"ou","add_video":"Ajouter une vidéo","discount_setting":{"title":"Vous avez un bon de réduction de {{Discount_amount}} !","subtitle":"Votre avis a été envoyé ! Vous bénéficierez de {{Discount_amount}} de réduction sur votre prochain achat.","tip_1":"Ajoutez des photos et obtenez {{Discount_amount}} de réduction sur votre prochain achat !","tip_2":"Postez de vrais sentiments et obtenez {{Discount_amount}} de réduction sur votre prochain achat !","tip_3":"Partagez votre expérience pour obtenir {{Discount_amount}} de réduction sur votre prochain achat !","copy":"Copier"}},"question_and_answer":{"title":"Questions","ask_a_question":"Poser une question","helpful":"Est-ce que cela a été utile?","desc_placeholder":"Veuillez décrire la question en détail","submit_question":"Soumettre une question"}}
-var vstar_write_review_settings = {"write_review_form":1,"show_email":2,"require_email":1,"show_phone":2,"require_phone":2,"show_feedback":1,"require_feedback":1,"review_button_background_color":"#000000","review_button_text_color":"#FFFFFF","thanks_button_background_color":"#000000","thanks_button_text_color":"#FFFFFF","enabled_add_video":0,"login_to_left_review":0,"discount_setting":{"discount_for_photo_reviews":1,"discount_value":"10%","discount_incentive_conditions":1,"discount_for_reviews_form":1}}
-var vstar_card_carousel_settings = {"show_reviews":1,"is_show_header":1,"header_card_bg_color":"#202123","header_star_color":"#FFFFFF","header_disabled_star_color":"#666666","header_text_color":"#FFFFFF","max_columns":3,"review_date_format_type":1,"is_show_country_flag":1,"is_show_verified_purchase":1,"widget_layout_card_bg_color":"#FFFFFF","widget_layout_star_color":"#202123","widget_layout_disabled_star_color":"#666666","widget_layout_text_color":"#202123","widget_layout_badge_color":"#202123","widget_layout_badge_text_color":"#202123","scroll_buttons_icon_color":"#202123","card_lang":"fr","auto_switch_language":2,"item_type":2}
-var vstar_buyers_show_settings = {"id":492,"title_text":"Buyers Shows","title_text_color":"#000000","title_font_size":16,"columns_count":4,"rows_count":2,"is_activated":2,"reviews_type":1,"create_time":"2023-10-17 02:28:26","update_time":"2023-10-17 02:28:26","title_align":"left"}
-var vstar_qa_settings = {"is_active":2}
-</script> --}}
+
 
 
 
